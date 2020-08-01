@@ -4,14 +4,12 @@ import com.example.petClinic.model.Owner;
 import com.example.petClinic.model.Pet;
 import com.example.petClinic.services.OwnerService;
 import com.example.petClinic.services.PetService;
-import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Set;
 
 @Service
-@Profile({"default", "map"})
 public class OwnerMapService extends AbstractMapService<Owner, Long> implements OwnerService {
 
     private final PetService petService;
@@ -71,7 +69,6 @@ public class OwnerMapService extends AbstractMapService<Owner, Long> implements 
 
     @Override
     public List<Owner> findAllByLastNameLike(String lastName) {
-
         //todo - impl
         return null;
     }
