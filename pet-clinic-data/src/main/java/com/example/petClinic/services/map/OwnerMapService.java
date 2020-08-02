@@ -2,8 +2,10 @@ package com.example.petClinic.services.map;
 
 import com.example.petClinic.model.Owner;
 import com.example.petClinic.model.Pet;
+import com.example.petClinic.model.PetType;
 import com.example.petClinic.services.OwnerService;
 import com.example.petClinic.services.PetService;
+import com.example.petClinic.services.PetTypeService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,9 +15,11 @@ import java.util.Set;
 public class OwnerMapService extends AbstractMapService<Owner, Long> implements OwnerService {
 
     private final PetService petService;
+    private final PetTypeService petTypeService;
 
-    public OwnerMapService( PetService petService) {
+    public OwnerMapService(PetService petService, PetTypeService petTypeService) {
         this.petService = petService;
+        this.petTypeService = petTypeService;
     }
 
     @Override
@@ -34,6 +38,12 @@ public class OwnerMapService extends AbstractMapService<Owner, Long> implements 
         if(object != null){
             if (object.getPets() != null) {
                 object.getPets().forEach(pet -> {
+
+                    if(pet.getPetType().getId() == null){
+                        PetType saveType = petTypeService.save(pet.getPetType());
+                        pet.setPetType(saveType);
+                    }
+
                     if(pet.getId() == null){
                         Pet savedPet = petService.save(pet);
                         pet.setId(savedPet.getId());
