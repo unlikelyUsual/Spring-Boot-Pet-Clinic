@@ -19,8 +19,8 @@
     <tr th:each="vet : ${vets}">
         <td th:text="${vet.firstName+ '  ' + vet.lastName }"></td>
         <td>
-            <span th:each="specialty : ${vet.setSpecialitySet}" th:text="${specialty.description + ', '}" ></span>
-            <span th:if="${vet?.specialities?.size() == 0}">none</span>
+            <span th:each="specialty : ${vet.specialitySet}" th:text="${specialty.description + ', '}" ></span>
+            <span th:if="${vet?.specialitySet?.size() == 0}">none</span>
         </td>
     </tr>
     </tbody>
