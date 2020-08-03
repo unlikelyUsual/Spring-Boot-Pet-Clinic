@@ -4,14 +4,15 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.Column;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Set;
 
 
 @Setter
 @Getter
+@Entity
+@Table(name = "pets")
 public class Pet extends BaseEntity{
 
     @Column(name = "name")
@@ -28,5 +29,8 @@ public class Pet extends BaseEntity{
     @Column(name = "birth_date")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate birthDate;
+
+    @OneToMany(cascade =  CascadeType.ALL, mappedBy = "pet")
+    private Set<Visit> visitSet;
 
 }

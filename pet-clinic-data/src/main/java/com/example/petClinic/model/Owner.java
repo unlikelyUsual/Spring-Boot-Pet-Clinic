@@ -3,15 +3,15 @@ package com.example.petClinic.model;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
 
 @Setter
 @Getter
+@Entity
+@Table(name = "owners")
 public class Owner extends Person {
 
     @Column(name = "address")
