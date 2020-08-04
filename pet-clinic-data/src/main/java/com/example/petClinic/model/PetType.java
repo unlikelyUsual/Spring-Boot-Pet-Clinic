@@ -1,6 +1,7 @@
 package com.example.petClinic.model;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.Column;
@@ -12,6 +13,7 @@ import javax.persistence.Table;
 @Getter
 @Entity
 @Table(name = "type")
+@NoArgsConstructor
 public class PetType extends BaseEntity {
 
     @Column(name = "name")
