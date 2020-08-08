@@ -1,5 +1,6 @@
 package com.example.petClinic.controllers;
 
+import com.example.petClinic.model.Owner;
 import com.example.petClinic.services.OwnerService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,6 +28,18 @@ public class OwnerController {
     String viewOwnerDetail(@PathVariable("id") Long id,  Model model) {
         model.addAttribute("owner",ownerService.findById(id));
         return "owners/viewOwner";
+    }
+
+    @GetMapping("/create")
+    String createOwnerPage(Model model) {
+        model.addAttribute("owner", new Owner());
+        return "owners/ownerForm";
+    }
+
+    @GetMapping("/modify/{id}")
+    String modifyOwnerPage(@PathVariable("id") Long id , Model model) {
+        model.addAttribute("owner",ownerService.findById(id));
+        return "owners/ownerForm";
     }
 
 }
