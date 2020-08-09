@@ -11,14 +11,14 @@
 <table class="table table-striped">
     <thead>
     <tr>
-        <th style="width: 150px;">Id</th>
+        <th style="width: 150px;">Action</th>
         <th style="width: 150px;">First Name</th>
         <th style="width: 150px;">Last Name</th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="owner : ${owners}">
-        <td th:text="${owner.id}">1</td>
+        <td><a class="btn-default btn" th:href="@{ '/owner/view/' + ${owner.id}}">View</a></td>
         <td th:text="${owner.firstName}">Joe</td>
         <td th:text="${owner.lastName}">Buck</td>
     </tr>

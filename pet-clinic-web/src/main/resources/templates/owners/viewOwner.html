@@ -22,7 +22,7 @@
 </table>
 
 <a th:href="@{'/owner/modify/'+ ${owner.id}}" class="btn btn-default">Edit Owner</a>
-<a th:href="@{/pets/new(id=${owner.id})}" class="btn btn-default">Add New Pet</a>
+<a th:href="@{'/pet/ownerId/' + ${owner.id} + '/create'}" class="btn btn-default">Add New Pet</a>
 <br />
 <br />
 <br />
@@ -52,7 +52,7 @@
                     <td th:text="${visit?.description}"></td>
                 </tr>
                 <tr>
-                    <td><a th:href="@{{ownerId}/pets/{petId}/edit(ownerId=${owner.id},petId=${pet.id})}">Edit Pet</a></td>
+                    <td><a th:href="@{'/pet/modify/'+ ${pet.id}}">Edit Pet</a></td>
                     <td><a th:href="@{{ownerId}/pets/{petId}/visits/new(ownerId=${owner.id},petId=${pet.id})}">Add Visit</a></td>
                 </tr>
             </table>

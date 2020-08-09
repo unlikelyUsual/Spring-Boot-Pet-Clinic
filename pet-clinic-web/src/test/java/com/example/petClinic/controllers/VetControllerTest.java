@@ -46,7 +46,7 @@ class VetControllerTest {
         vets.add(vet2);
         when(vetService.findAll()).thenReturn(vets);
 
-        mockMvc.perform(get("/vet/index"))
+        mockMvc.perform(get("/vets/index"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("vets/index"))
                 .andExpect(model().attribute("vets",hasSize(2)));
