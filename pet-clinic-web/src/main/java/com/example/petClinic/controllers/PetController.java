@@ -50,9 +50,14 @@ public class PetController {
         if(pet.getOwner() == null) throw new RuntimeException("Owner Not Found");
         PetType petType = petTypeService.findByName(pet.getPetType().getName());
         Owner owner = ownerService.findById(pet.getOwner().getId());
-        pet.setOwner(owner);
         pet.setPetType(petType);
-        owner.getPets().add(pet);
+        if(pet.getId() == null){
+            pet.setOwner(owner);
+            owner.getPets().add(pet);
+        }
+        else{
+            Pet savedPet = petService.save(pet);
+        }
         Owner savedOwner = ownerService.save(owner);
         return "redirect:/owner/view/" + savedOwner.getId();
     }
