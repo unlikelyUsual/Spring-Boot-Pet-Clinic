@@ -11,16 +11,22 @@
 <table class="table table-striped">
     <thead>
     <tr>
-        <th style="width: 150px;">Action</th>
-        <th style="width: 150px;">First Name</th>
-        <th style="width: 150px;">Last Name</th>
+        <th style="width: 150px;">Name</th>
+        <th style="width: 150px;">Address</th>
+        <th style="width: 150px;">City</th>
+        <th style="width: 150px;">Telephone</th>
+        <th style="width: 150px;">Pets</th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="owner : ${owners}">
-        <td><a class="btn-default btn" th:href="@{ '/owner/view/' + ${owner.id}}">View</a></td>
-        <td th:text="${owner.firstName}">Joe</td>
-        <td th:text="${owner.lastName}">Buck</td>
+        <td><a th:href="@{ '/owner/view/' + ${owner.id}}" th:text="${owner?.firstName + ' ' + owner?.lastName}">Name</a></td>
+        <td th:text="${owner.address}">123 Street</td>
+        <td th:text="${owner.city}">Delhi</td>
+        <td th:text="${owner.telephone}">222-333-122</td>
+        <td>
+            <span th:each="pet : ${owner.pets}" th:text="${pet.name} + ' ' "></span>
+        </td>
     </tr>
     </tbody>
 </table>
